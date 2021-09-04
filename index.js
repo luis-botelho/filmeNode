@@ -5,6 +5,7 @@ const Connect = require("./Db/db");
 const routes = require("./routers/routes");
 app.use(express.json());
 
+// :comentando 
 Connect("localhost", 27017, "movie");
 app.get("/", (req, res) => {
   res.send("<h1>Funcionou</h1>");

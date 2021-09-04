@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-function Connection(url, port, db) {
+function Connection() {
   mongoose
-    .connect(`mongodb://${url}:${port}/${db}`, {
+    .connect('mongodb+srv://luis:6xMByHoGCr7F9QTr@cluster0.sxthp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' , {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -15,3 +15,4 @@ function Connection(url, port, db) {
 }
 
 module.exports = Connection;
+//  `mongodb://${url}:${port}/${db}`

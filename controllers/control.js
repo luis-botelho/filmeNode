@@ -24,17 +24,23 @@ const addMovie = (req, res) => {
 };
 const updateMovie = async (req, res) => {
   const body = req.body;
-    if(!body){
-        return res.status(400).send(`Movie not valid`);
-    }else{
-        await movieModel
-    .updateOne({ _id: req.params.id }, req.body)
-    .then(() => res.status(200).send(`Movie updated successfully`))
-    .catch(() => res.status(400).send("Movie not updated successfully"));
-    }
+  if (!body) {
+    return res.status(400).send(`Movie not valid`);
+  } else {
+    await movieModel
+      .updateOne({ _id: req.params.id }, req.body)
+      .then(() => res.status(200).send(`Movie updated successfully`))
+      .catch(() => res.status(400).send("Movie not updated successfully"));
+  }
 };
 const deleteMovie = async (req, res) => {
-    await movieModel.findOneDelete({ _id: req.params.id }, req.)
-    
-}
-module.exports = { getMovies, addMovie, updateMovie };
+  await movieModel
+    .findOneDelete({ _id: req.params.id }, req.params.id)
+    .then(() => 
+      res.status(200).send(`Movie deleted successfully`))
+    .catch((err) => {
+      res.status(400).send("Movie not deleted successfully");
+      console.log(err);
+    });
+ };
+module.exports = { getMovies, addMovie, updateMovie, deleteMovie};

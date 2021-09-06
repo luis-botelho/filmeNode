@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
-function Connection() {
+function Connection(url,user,password,db) {
   mongoose
-    .connect('mongodb+srv://luis:6xMByHoGCr7F9QTr@cluster0.sxthp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' , {
+    .connect( `${url}/${db}`, {
+      user:user,
+      pass: password,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
